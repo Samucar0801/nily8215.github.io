@@ -1,0 +1,575 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@300;400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent-color: #ff69b4;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #2a2a2a 100%);
+  color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Padrão de caveiras flutuantes */
+.skull-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.skull {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--accent-color);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  opacity: 0.1;
+  animation: floatSkull 15s infinite linear;
+}
+
+.skull::before,
+.skull::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #2a2a2a;
+  border-radius: 50%;
+  top: 6px;
+}
+
+.skull::before {
+  left: 4px;
+}
+.skull::after {
+  right: 4px;
+}
+
+@keyframes floatSkull {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+  }
+}
+
+/* Header */
+header {
+  background: linear-gradient(45deg, var(--accent-color), #ff1493);
+  padding: 20px 0;
+  box-shadow: 0 4px 20px rgba(255, 105, 180, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background 0.5s ease;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+nav a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+}
+
+nav a:hover::before {
+  left: 0;
+}
+
+nav a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Container principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Título principal */
+h1 {
+  font-family: "Fredoka One", cursive;
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, var(--accent-color), #ffffff, #ff1493);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease-in-out infinite;
+  text-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+  position: relative;
+  min-height: 64px;
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Subtítulo */
+.subtitle {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  color: var(--accent-color);
+  font-weight: 300;
+  animation: pulse 2s ease-in-out infinite;
+  transition: color 0.5s ease;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Seção da história */
+.HstNily {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 105, 180, 0.1),
+    rgba(255, 20, 147, 0.1)
+  );
+  border-radius: 20px;
+  padding: 40px;
+  margin: 40px 0;
+  border: 2px solid var(--accent-color);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+  transition: border-color 0.5s ease;
+}
+
+.HstNily.interactive-story {
+  height: auto;
+  text-align: center;
+}
+
+.HstNily::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 105, 180, 0.1) 0%,
+    transparent 70%
+  );
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.HstNily h2 {
+  font-family: "Fredoka One", cursive;
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: color 0.5s ease;
+}
+
+.HstNily p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  /* margin-bottom: 20px; */ /* Removido para controle na história interativa */
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+/* Imagem da Nily */
+.nily-cupido {
+  display: block;
+  max-width: 300px;
+  margin: 40px auto;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+  transition: transform 0.3s ease, opacity 0.5s ease-in-out;
+  animation: bounce 2s ease-in-out infinite;
+  border: 3px solid var(--accent-color);
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.nily-cupido:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Seção de recursos */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin: 60px 0;
+}
+
+.feature-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 105, 180, 0.1),
+    rgba(255, 20, 147, 0.1)
+  );
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  border: 2px solid var(--accent-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.feature-card:hover::before {
+  left: 100%;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+}
+
+.feature-card h3 {
+  font-family: "Fredoka One", cursive;
+  font-size: 1.8rem;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+  transition: color 0.5s ease;
+}
+
+.feature-card p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Galeria de Imagens */
+.nily-gallery-section {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.gallery-title {
+  font-family: "Fredoka One", cursive;
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 30px;
+  transition: color 0.5s ease;
+}
+
+.nily-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.gallery-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 3px solid var(--accent-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.4s ease, border-color 0.5s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+}
+
+/* Botão mágico */
+.magic-button {
+  display: block;
+  width: 220px;
+  margin: 40px auto;
+  padding: 15px 30px;
+  background: linear-gradient(45deg, var(--accent-color), #ff1493);
+  color: white;
+  text-decoration: none;
+  font-family: "Fredoka One", cursive;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+}
+
+.magic-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.magic-button:hover::before {
+  left: 100%;
+}
+
+.magic-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.5);
+}
+
+/* Seção de Contato */
+.contact-section {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 105, 180, 0.1),
+    rgba(255, 20, 147, 0.1)
+  );
+  border-top: 2px solid var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding: 60px 20px;
+  text-align: center;
+  transition: border-color 0.5s ease;
+}
+
+.contact-section h2 {
+  font-family: "Fredoka One", cursive;
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+  transition: color 0.5s ease;
+}
+
+.contact-section p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.social-icon {
+  color: #fff;
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--accent-color);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  animation: pulseIcon 2s infinite ease-in-out;
+}
+
+.social-icon:hover {
+  transform: scale(1.2) rotate(360deg);
+  background-color: #fff;
+  color: var(--accent-color);
+  animation-play-state: paused;
+}
+
+@keyframes pulseIcon {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+  padding: 30px 0;
+  text-align: center;
+  margin-top: 0;
+  border-top: 2px solid var(--accent-color);
+  transition: border-color 0.5s ease;
+}
+
+.heart {
+  display: inline-block;
+  color: var(--accent-color);
+  animation: heartbeat 1.5s ease-in-out infinite;
+  transition: color 0.5s ease;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+    min-height: 40px;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .container {
+    padding: 20px 10px;
+  }
+
+  .HstNily {
+    padding: 20px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .nily-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gallery-img {
+    width: 80%;
+    height: auto;
+  }
+}
+
+/* Partículas flutuantes */
+.particle {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particleFloat 3s linear;
+  z-index: 999;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Efeito de coração para o botão mágico */
+.magic-heart {
+  position: fixed;
+  font-size: 2rem;
+  color: var(--accent-color);
+  pointer-events: none;
+  animation: riseAndFade 1.5s linear forwards;
+  z-index: 1001;
+}
+
+@keyframes riseAndFade {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) scale(0.5);
+    opacity: 0;
+  }
+}

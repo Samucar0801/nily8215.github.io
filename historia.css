@@ -1,0 +1,169 @@
+/* Estilos para a Seção de História Interativa */
+.interactive-story .story-content {
+  min-height: 180px; /* Altura mínima para evitar colapso */
+  position: relative;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.interactive-story .story-part {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s;
+}
+
+.interactive-story .story-part.active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+#next-story-btn {
+  background: linear-gradient(45deg, var(--accent-color), #ff1493);
+  color: white;
+  font-family: "Fredoka One", cursive;
+  font-size: 1.1rem;
+  padding: 12px 25px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+  z-index: 5;
+  position: relative;
+}
+
+#next-story-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.5);
+}
+
+#next-story-btn:disabled {
+  background: #555;
+  cursor: not-allowed;
+  transform: scale(1);
+  box-shadow: none;
+}
+
+/* Animações malucas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.shake-effect {
+  animation: shake 0.5s ease-in-out 3;
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px) rotate(-1deg);
+  }
+  50% {
+    transform: translateX(5px) rotate(1deg);
+  }
+  75% {
+    transform: translateX(-3px) rotate(0deg);
+  }
+}
+
+.heartbeat-effect p {
+  animation: heartbeat 1s ease-in-out infinite;
+}
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.aurora-effect p {
+  animation: auroraGlow 4s ease-in-out infinite;
+}
+@keyframes auroraGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 10px #da70d6, 0 0 20px #ff1493;
+  }
+  50% {
+    text-shadow: 0 0 10px #ff69b4, 0 0 20px #ffffff;
+  }
+}
+
+.jitter-effect p {
+  animation: nervousJitter 0.1s linear infinite;
+}
+@keyframes nervousJitter {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(1px, -1px);
+  }
+  50% {
+    transform: translate(-1px, 1px);
+  }
+  75% {
+    transform: translate(1px, 1px);
+  }
+}
+
+.final-part.active p {
+  animation: sparkle 2s ease-in-out infinite;
+}
+@keyframes sparkle {
+  0%,
+  100% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px var(--accent-color);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px var(--accent-color);
+  }
+}
+
+/* Efeito Confetti */
+.confetti-spark {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation: burst 0.8s ease-out forwards;
+}
+@keyframes burst {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
+}
