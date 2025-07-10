@@ -177,15 +177,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // Aplicar animação de entrada aos elementos
   document
     .querySelectorAll(
-      ".HstNily, .feature-card, .nily-gallery-section, .contact-section"
+      ".feature-card, .nily-gallery-section, .contact-section"
     )
     .forEach((el) => {
-      // Não aplicar a animação de entrada na seção de história para não conflitar com a interatividade
-      if (!el.classList.contains("interactive-story")) {
         el.style.opacity = "0";
         el.style.transform = "translateY(50px)";
         el.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
         observer.observe(el);
-      }
     });
 });
